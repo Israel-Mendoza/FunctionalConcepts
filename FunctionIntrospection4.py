@@ -57,5 +57,34 @@ for attr in dir(inspect.signature(my_func)):
 
 signature = inspect.signature(my_func)
 
-for k in signature.parameters:
-    print(k)
+for k, param in signature.parameters.items():
+    print(f"Key: {k}")  # str
+    print(f"\tName: {param.name}")  # str (same as key)
+    print(f"\tDefault: {param.default}")  # Any (inspect._empty if not specified)
+    print(f"\tAnnotation: {param.annotation}")  # Any (annotation value)
+    print(f"\tKind: {param.kind}")
+# Key: a
+# 	Name: a
+# 	Default: <class 'inspect._empty'>
+# 	Annotation: <class 'types.GenericAlias'>
+# 	Kind: POSITIONAL_OR_KEYWORD
+# Key: b
+# 	Name: b
+# 	Default: 1
+# 	Annotation: <class 'type'>
+# 	Kind: POSITIONAL_OR_KEYWORD
+# Key: args
+# 	Name: args
+# 	Default: <class 'inspect._empty'>
+# 	Annotation: <class 'type'>
+# 	Kind: VAR_POSITIONAL
+# Key: kw1
+# 	Name: kw1
+# 	Default: 100
+# 	Annotation: <class 'type'>
+# 	Kind: KEYWORD_ONLY
+# Key: kwargs
+# 	Name: kwargs
+# 	Default: <class 'inspect._empty'>
+# 	Annotation: <class 'type'>
+# 	Kind: VAR_KEYWORD
